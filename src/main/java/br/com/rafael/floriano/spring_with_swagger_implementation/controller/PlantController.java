@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/plant")
@@ -43,6 +44,13 @@ public class PlantController {
         if (plantId == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PutMapping("/{plantId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Update Plant", description = "Update Plant record in database by using plantId and Request Body Object")
+    public Plant updatePlant(@PathVariable("plantId") Long plantId, @RequestBody Plant plant) {
+        return new Plant(plant.getName());
     }
 
 }
