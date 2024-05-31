@@ -16,4 +16,13 @@ public class PlantController {
         return new Plant("GIRASSOL");
     }
 
+    @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Plant createPlant(@RequestBody Plant plant) {
+        if (plant.getName() == null) {
+            throw  new BadRequestException("Name could not be null");
+        }
+        return new Plant(plant.getName());
+    }
+
 }
