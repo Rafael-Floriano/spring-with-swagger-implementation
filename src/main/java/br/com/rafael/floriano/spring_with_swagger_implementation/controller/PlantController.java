@@ -1,12 +1,14 @@
 package br.com.rafael.floriano.spring_with_swagger_implementation.controller;
 
+import br.com.rafael.floriano.spring_with_swagger_implementation.exception.BadRequestException;
 import br.com.rafael.floriano.spring_with_swagger_implementation.model.Plant;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/plant")
-
+@Tag(name = "Plant Controller", description = "This controller is a implementation example of swagger 3 with spring")
 public class PlantController {
 
 
