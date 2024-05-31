@@ -11,6 +11,8 @@ public class Plant implements Serializable {
         this.name = name;
     }
 
+    public Plant() {}
+
     public String getName() {
         return name;
     }
