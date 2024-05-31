@@ -35,4 +35,14 @@ public class PlantController {
         return new Plant(plant.getName());
     }
 
+    @DeleteMapping("/{plantId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Delete plant by id", description = "Delete Plant record in database by id")
+    @ApiResponses({@ApiResponse(responseCode = "404", description = "Plant is not found in databse or id is not provided", content = {@Content(schema = @Schema())})})
+    public void deletePlant(@PathVariable("plantId") Long plantId) {
+        if (plantId == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
