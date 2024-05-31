@@ -2,6 +2,11 @@ package br.com.rafael.floriano.spring_with_swagger_implementation.controller;
 
 import br.com.rafael.floriano.spring_with_swagger_implementation.exception.BadRequestException;
 import br.com.rafael.floriano.spring_with_swagger_implementation.model.Plant;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +19,7 @@ public class PlantController {
 
     @GetMapping("/show/plant/{plantId}")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Retrieve a Plant by id", description = "Get a Plant object by provided ID")
     public Plant showMyPlant(@PathVariable("plantId") Long plantId) {
         return new Plant("GIRASSOL");
     }
