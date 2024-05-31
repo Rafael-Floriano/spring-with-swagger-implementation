@@ -26,6 +26,8 @@ public class PlantController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Create a new Plant record", description = "Create new Plant by sent object in RequestBody")
+    @ApiResponses({@ApiResponse(responseCode = "400", description = "Is not be possible create a new plant without name", content = {@Content(schema = @Schema())})})
     public Plant createPlant(@RequestBody Plant plant) {
         if (plant.getName() == null) {
             throw  new BadRequestException("Name could not be null");
